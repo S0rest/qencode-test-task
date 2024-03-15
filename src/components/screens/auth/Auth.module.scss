@@ -1,0 +1,127 @@
+//  479.98
+.auth {
+	@apply flex flex-col justify-center overflow-hidden min-h-full w-full;
+
+	&__form {
+		@apply max-w-[400px] my-0 mx-auto;
+
+		@media (max-width: 479.98px) {
+			@apply max-w-[unset] px-[10px];
+		}
+	}
+
+	&__logo {
+		@apply flex items-center justify-center mb-[80px];
+
+		@media (max-width: 479.98px) {
+			@apply mb-[30px];
+		}
+	}
+
+	&__title {
+		@apply font-bold text-[30px]/[38.73px] mb-[40px] text-center text-[#1A1919];
+
+		@media (max-width: 479.98px) {
+			@apply mb-[20px];
+		}
+	}
+
+	&__socials {
+		@apply mb-[30px];
+
+		@media (max-width: 479.98px) {
+			@apply mb-[15px];
+		}
+	}
+
+	&__decor {
+		@apply flex items-center mb-[30px];
+
+		@media (max-width: 479.98px) {
+			@apply mb-[15px];
+		}
+	}
+
+	&__button {
+		@apply h-[48px] mt-[30px] mb-[20px] w-full bg-[#316FEA] rounded-md py-[14px] text-[#FFFFFF] text-base/[21px] text-center;
+
+		@media (max-width: 479.98px) {
+			@apply mt-[15px] mb-[10px];
+		}
+	}
+
+	&__hint {
+		@apply text-[14px]/[20px] text-[#060E1E] text-center;
+
+		&_link {
+			@apply text-[#316FEA] font-medium;
+		}
+	}
+}
+
+.socials {
+	@apply flex;
+
+	@media (max-width: 479.98px) {
+		@apply flex-col;
+	}
+
+	&__columns {
+		flex: 0 1 50%;
+
+		&:first-child {
+			@apply mr-[8px];
+		}
+
+		&:last-child {
+			@apply ml-[8px];
+		}
+
+		@media (max-width: 479.98px) {
+			@apply flex-auto;
+
+			&:first-child {
+				@apply mr-0 mb-[15px];
+			}
+
+			&:last-child {
+				@apply ml-0;
+			}
+		}
+	}
+
+	&__button {
+		@apply flex items-center justify-center h-[48px] border-[1.2px] border-solid border-[#D3D8DC] py-[14px] px-[58px] rounded-md;
+
+		@media (max-width: 479.98px) {
+			@apply w-full;
+		}
+	}
+
+	&__icon {
+		@apply mr-[10px];
+	}
+
+	&__text {
+		@apply font-medium text-[14px]/[20px] text-[#060E1E];
+	}
+}
+
+.decor {
+	&__column {
+		@apply flex flex-auto items-center;
+
+		&:before {
+			content: '';
+			@apply h-[1px] flex-auto bg-[#E3E6E9];
+		}
+
+		&_m {
+			@apply flex-shrink-0 flex-grow-0 basis-[18px] mx-[5px];
+		}
+	}
+
+	&__text {
+		@apply font-medium text-[12px]/[16px] text-[#BEC5CC];
+	}
+}

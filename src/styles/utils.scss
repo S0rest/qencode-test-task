@@ -1,0 +1,17 @@
+// Form elements
+input[type='text'],
+[type='email'],
+input[type='tel'],
+textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.input {
+	@apply w-full h-[48px] border-[1.2px] border-solid border-[#D3D8DC] rounded-md px-[12px] py-[14px] text-[15px]/[20px] text-[#060E1E];
+
+	&::placeholder {
+		@apply text-[#A1ABB5];
+	}
+}
