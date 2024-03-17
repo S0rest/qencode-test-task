@@ -1,0 +1,21 @@
+.auth {
+	&__passwordInput {
+		@apply mt-[25px];
+	}
+
+	&__button {
+		@apply mt-[30px] mb-[20px];
+
+		@media (max-width: 479.98px) {
+			@apply mt-[25px] mb-[10px];
+		}
+	}
+
+	&__hint {
+		@apply text-[14px]/[20px] text-[#060E1E] text-center;
+
+		&Password {
+			@apply block text-[14px]/[20px] text-[#316FEA] font-medium text-right mt-[15px];
+		}
+	}
+}

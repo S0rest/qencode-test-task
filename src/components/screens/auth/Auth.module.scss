@@ -3,7 +3,7 @@
 	@apply flex flex-col justify-center overflow-hidden min-h-full w-full;
 
 	&__form {
-		@apply max-w-[400px] my-0 mx-auto;
+		@apply max-w-[400px] my-0 mx-auto w-full;
 
 		@media (max-width: 479.98px) {
 			@apply max-w-[unset] px-[10px];
@@ -22,7 +22,7 @@
 		@apply font-bold text-[30px]/[38.73px] mb-[40px] text-center text-[#1A1919];
 
 		@media (max-width: 479.98px) {
-			@apply mb-[20px];
+			@apply mb-[25px];
 		}
 	}
 
@@ -30,7 +30,7 @@
 		@apply mb-[30px];
 
 		@media (max-width: 479.98px) {
-			@apply mb-[15px];
+			@apply mb-[25px];
 		}
 	}
 
@@ -38,16 +38,12 @@
 		@apply flex items-center mb-[30px];
 
 		@media (max-width: 479.98px) {
-			@apply mb-[15px];
+			@apply mb-[25px];
 		}
 	}
 
-	&__button {
-		@apply h-[48px] mt-[30px] mb-[20px] w-full bg-[#316FEA] rounded-md py-[14px] text-[#FFFFFF] text-base/[21px] text-center;
-
-		@media (max-width: 479.98px) {
-			@apply mt-[15px] mb-[10px];
-		}
+	&__passwordInput {
+		@apply mt-[25px];
 	}
 
 	&__hint {
@@ -55,6 +51,10 @@
 
 		&_link {
 			@apply text-[#316FEA] font-medium;
+		}
+
+		&Password {
+			@apply block text-[14px]/[20px] text-[#316FEA] font-medium text-right mt-[15px];
 		}
 	}
 }
@@ -81,7 +81,7 @@
 			@apply flex-auto;
 
 			&:first-child {
-				@apply mr-0 mb-[15px];
+				@apply mr-0 mb-[25px];
 			}
 
 			&:last-child {

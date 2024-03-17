@@ -1,16 +1,16 @@
 import '@/styles/fonts.scss'
 import '@/styles/index.scss'
 import '@/styles/utils.scss'
-import store from '@store'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
-import { Provider } from 'react-redux'
 import App from './App.tsx'
+import { queryClient } from './query/queryClient.ts'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<StrictMode>
-		<Provider store={store}>
+		<QueryClientProvider client={queryClient}>
 			<App />
-		</Provider>
+		</QueryClientProvider>
 	</StrictMode>
 )
