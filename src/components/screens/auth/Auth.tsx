@@ -36,6 +36,8 @@ const Auth = ({ type, title }: AuthProps) => {
 		reset,
 	} = useForm<LoginFormState>({
 		mode: 'onChange',
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		resolver: type === 'Set Password' ? yupResolver(FormSchema) : undefined,
 	})
 
