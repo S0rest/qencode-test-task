@@ -1,3 +1,5 @@
+@use "../styles/variables.scss" as vars;
+
 // Tailwind
 @tailwind base;
 @tailwind components;
@@ -44,7 +46,7 @@ body {
 	background: #fff;
 	line-height: 1;
 	font-size: 14px;
-	font-family: 'Basis Grotesque Pro';
+	font-family: vars.$font-family;
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
@@ -57,7 +59,7 @@ body > #root {
 input,
 button,
 textarea {
-	font-family: 'Basis Grotesque Pro';
+	font-family: vars.$font-family;
 }
 
 input::-ms-clear {

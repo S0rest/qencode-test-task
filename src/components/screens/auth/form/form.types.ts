@@ -9,6 +9,7 @@ import {
 export type LoginFormState = {
 	email: string
 	password: string
+	confirmPassword: string
 }
 
 export type LoginFormProps = {
@@ -34,7 +35,21 @@ export type ForgotPasswordFormProps = {
 	error: Error | null
 }
 
+export type ResetPasswordFormProps = {
+	handleSubmit: UseFormHandleSubmit<LoginFormState, LoginFormState>
+	onSubmit: SubmitHandler<LoginFormState>
+	register: UseFormRegister<LoginFormState>
+	errors: FieldErrors<LoginFormState>
+	fieldType: FieldType
+	handleChangeFieldType: () => void
+	fieldTypeConfirm: FieldType
+	handleChangeFieldTypeConfirm: () => void
+	isPending: boolean
+	isError: boolean
+	error: Error | null
+}
+
 export type FormSuccessProps = {
-	type: 'Login' | 'Forgot Password' | 'Reset Password'
+	type: 'Login' | 'Forgot Password' | 'Set Password'
 	formSuccess: boolean
 }

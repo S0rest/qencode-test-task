@@ -2,8 +2,7 @@
 	@apply relative flex;
 
 	.icon {
-		// @apply block absolute top-0 right-0 cursor-pointer h-full py-[14px] px-[12px];
-		@apply flex-grow-0 flex-shrink-0 basis-[48px] cursor-pointer p-[12px] border-[1.2px] border-solid border-[#D3D8DC] border-l-0 rounded-md rounded-l-none;
+		@apply flex-grow-0 flex-shrink-0 basis-[48px] cursor-pointer p-[12px] border-[1.2px] border-solid border-border border-l-0 rounded-md rounded-l-none;
 	}
 
 	.input__icon {

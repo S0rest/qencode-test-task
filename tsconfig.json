@@ -29,14 +29,10 @@
 			"@pages": ["./pages"],
 			"@utils/*": ["./utils/*"],
 			"@styles/*": ["./styles/*"],
-			// "@fonts/*": ["./fonts/*"],
+			"@fonts/*": ["./fonts/*"],
 			"@images/*": ["./assets/*"],
 			"@hooks": ["./hooks"],
 			"@hocs": ["./hocs"],
-			// "@store-services/*": ["./app/services/*"],
-			"@slices/*": ["./store/slices/*"],
-			"@api": ["./store/api/api"],
-			"@store": ["./store/store"],
 			"@axios": ["./axios/axios"]
 		}
 	},

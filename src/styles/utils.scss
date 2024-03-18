@@ -9,7 +9,7 @@ textarea {
 }
 
 .input {
-	@apply w-full h-[48px] border-[1.2px] border-solid border-[#D3D8DC] rounded-md px-[12px] py-[14px] text-[15px]/[20px] text-[#060E1E];
+	@apply w-full h-[48px] border-[1.2px] border-solid border-border rounded-md px-[12px] py-[14px] text-[15px]/[20px] text-darkBlack;
 
 	&::placeholder {
 		@apply text-[#A1ABB5];
@@ -18,6 +18,10 @@ textarea {
 
 .error {
 	@apply text-red-400 text-sm absolute mt-[2px] max-w-[400px] text-ellipsis overflow-hidden text-nowrap;
+}
+
+.label {
+	@apply font-medium text-[15px]/[21px] text-darkBlack;
 }
 
 .alertSlow {

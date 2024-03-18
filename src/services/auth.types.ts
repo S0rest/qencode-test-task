@@ -5,7 +5,7 @@ export type AuthLoginType = {
 
 export type ForgotPasswordType = Pick<AuthLoginType, 'email'>
 
-export type AuthResponse = {
+export type AuthLoginResponse = {
 	error: number
 	timestamp: number
 	access_token: string
@@ -17,10 +17,22 @@ export type AuthResponse = {
 	| { detail: string | number }
 )
 
-export type AuthArrError = Pick<AuthResponse, 'error' | 'timestamp'> & {
+export type AuthPasswordResetResponse = Pick<
+	AuthLoginResponse,
+	'detail' | 'timestamp'
+>
+
+export type AuthArrError = Pick<AuthLoginResponse, 'error' | 'timestamp'> & {
 	detail: { field_name: string; error: string }[]
 }
 
-export type AuthStrError = Pick<AuthResponse, 'error' | 'timestamp'> & {
+export type AuthStrError = Pick<AuthLoginResponse, 'error' | 'timestamp'> & {
 	detail: string | number
+}
+
+export type AuthPasswordResetType = {
+	token: string
+	secret: string
+	password: string
+	password_confirm: string
 }

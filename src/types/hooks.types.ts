@@ -8,3 +8,8 @@ export type ForgotPasswordMutationType = {
 	setFormSuccess: React.Dispatch<React.SetStateAction<boolean>>
 	reset: () => void
 }
+
+export type SetPasswordMutationType = {
+	setFormSuccess: React.Dispatch<React.SetStateAction<boolean>>
+	reset: () => void
+}

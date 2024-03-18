@@ -1,3 +1,5 @@
+@use "../../../../../styles/variables.scss" as vars;
+
 .auth {
 	&__passwordInput {
 		@apply mt-[25px];
@@ -6,16 +8,16 @@
 	&__button {
 		@apply mt-[30px] mb-[20px];
 
-		@media (max-width: 479.98px) {
+		@media (max-width: vars.$md4) {
 			@apply mt-[25px] mb-[10px];
 		}
 	}
 
 	&__hint {
-		@apply text-[14px]/[20px] text-[#060E1E] text-center;
+		@apply text-[14px]/[20px] text-darkBlack text-center;
 
 		&Password {
-			@apply block text-[14px]/[20px] text-[#316FEA] font-medium text-right mt-[15px];
+			@apply block text-[14px]/[20px] text-primary font-medium text-right mt-[15px];
 		}
 	}
 }

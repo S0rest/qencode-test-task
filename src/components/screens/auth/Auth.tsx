@@ -2,9 +2,12 @@ import { GithubIcon, GoogleIcon, QencodeLogo } from '@/assets/CommonIcons'
 import { FieldType } from '@/components/ui/field/field.types'
 import { useForgotPasswordMutation } from '@/hooks/useForgotPasswordMutation'
 import { useLoginMutation } from '@/hooks/useLoginMutation'
+import { useSetPasswordMutation } from '@/hooks/useSetPasswordMutation'
 import { ROUTE } from '@/util/enums'
+import { FormSchema } from '@/util/helpers'
+import { yupResolver } from '@hookform/resolvers/yup'
 import cn from 'clsx'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import s from './Auth.module.scss'
@@ -13,22 +16,28 @@ import FormSuccess from './form-success/FormSuccess'
 import ForgotPasswordForm from './form/forgot-password/ForgotPasswordForm'
 import { LoginFormState } from './form/form.types'
 import LoginForm from './form/login/LoginForm'
+import ResetPasswordForm from './form/set-password/SetPasswordForm'
 
 const Auth = ({ type, title }: AuthProps) => {
 	const [isLoginNextPage, setIsLoginNextPage] = useState(false)
 	const [fieldType, setFieldType] = useState<FieldType>('password')
+	const [fieldTypeConfirm, setFieldTypeConfirm] =
+		useState<FieldType>('password')
 	const [formSuccess, setFormSuccess] = useState(false)
+	const queryParameters = new URLSearchParams(window.location.search)
+
+	const [secret, setSecret] = useState<string | null>(null)
+	const [token, setToken] = useState<string | null>(null)
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 		reset,
-		// watch,
 	} = useForm<LoginFormState>({
 		mode: 'onChange',
+		resolver: type === 'Set Password' ? yupResolver(FormSchema) : undefined,
 	})
-	// console.log(watch())
 
 	const {
 		mutate: mutateLogin,
@@ -51,26 +60,66 @@ const Auth = ({ type, title }: AuthProps) => {
 		reset,
 	})
 
+	const {
+		mutate: mutateSetPassword,
+		isPending: isSetPasswordPending,
+		isError: isSetPasswordError,
+		error: setPasswordError,
+	} = useSetPasswordMutation({
+		setFormSuccess,
+		reset,
+	})
+
 	const onSubmit: SubmitHandler<LoginFormState> = formData => {
-		console.log(formData)
+		// console.log(formData)
 		if (type === 'Login') {
 			if (!isLoginNextPage) {
 				setIsLoginNextPage(true)
 				return
 			}
 			mutateLogin(formData)
-			// setFormSuccess(true)
-			// console.log(formData)
-			// reset()
-			// setIsLoginNextPage(false)
 		} else if (type === 'Forgot Password') {
 			mutateForgotPassword({ email: formData.email })
+		} else if (type === 'Set Password') {
+			if (formData.password !== formData.confirmPassword) return
+
+			const data = {
+				token: token ? token : 'token',
+				secret: secret ? secret : 'secret',
+				password: formData.password,
+				password_confirm: formData.confirmPassword,
+			}
+			mutateSetPassword(data)
 		}
+		// setFormSuccess(true)
+		// reset()
+		// setIsLoginNextPage(false)
 	}
 
 	const handleChangeFieldType = () => {
 		setFieldType(prev => (prev === 'password' ? 'text' : 'password'))
 	}
+
+	const handleChangeFieldTypeConfirm = () => {
+		setFieldTypeConfirm(prev => (prev === 'password' ? 'text' : 'password'))
+	}
+
+	useEffect(() => {
+		if (type !== 'Set Password') return
+
+		const paramSecret = queryParameters.get('secret')
+		const paramToken = queryParameters.get('token')
+
+		if (paramSecret) {
+			console.log(paramSecret)
+			setSecret(paramSecret)
+		}
+		if (paramToken) {
+			console.log(paramToken)
+			setToken(paramToken)
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [queryParameters.size, type])
 
 	return (
 		<div className={s.auth}>
@@ -137,6 +186,21 @@ const Auth = ({ type, title }: AuthProps) => {
 								isPending={isForgotPasswordPending}
 								isError={isForgotPasswordError}
 								error={forgotPasswordError}
+							/>
+						)}
+						{type === 'Set Password' && (
+							<ResetPasswordForm
+								handleSubmit={handleSubmit}
+								onSubmit={onSubmit}
+								register={register}
+								errors={errors}
+								fieldType={fieldType}
+								handleChangeFieldType={handleChangeFieldType}
+								fieldTypeConfirm={fieldTypeConfirm}
+								handleChangeFieldTypeConfirm={handleChangeFieldTypeConfirm}
+								isPending={isSetPasswordPending}
+								isError={isSetPasswordError}
+								error={setPasswordError}
 							/>
 						)}
 					</>

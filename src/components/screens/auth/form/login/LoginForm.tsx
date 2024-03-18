@@ -84,7 +84,7 @@ const LoginForm = ({
 							required: 'Please enter password',
 							minLength: {
 								value: 8,
-								message: 'Min length 8 characters',
+								message: 'Password length should be at least 8 characters',
 							},
 						})}
 						type={fieldType}
